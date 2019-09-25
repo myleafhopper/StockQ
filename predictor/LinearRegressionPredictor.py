@@ -32,8 +32,12 @@ print("Coefficient: ", linear.coef_)
 print("Intercept: ", linear.intercept_, '\n')
 
 predictions = linear.predict(attributes_test)
+totalPercentages = 0
 
 print("Index => Prediction => => Actual => Accuracy %")
 for x in range(len(predictions)):
     percentage = round(((predictions[x] / labels_test[x]) * 100), 2)
+    totalPercentages = totalPercentages + percentage
     print(x, ' => ', predictions[x], " => ", labels_test[x], " => ", percentage, "%")
+
+print("\nAverage Accuracy % => ", round((totalPercentages / len(predictions)), 2), "%")
