@@ -57,7 +57,7 @@ class LstmModel:
     # ------------------------------------------------------------------------------------------------------------------
     # Split into training and test data-sets.
     def create_training_and_testing_data(self):
-        train_size = int(len(self.dataset) * 0.8)
+        train_size = int(len(self.dataset) * self.test_set_divider)
         self.training_data = self.dataset[0:train_size, :]
         self.testing_data = self.dataset[train_size:len(self.dataset), :]
 
@@ -100,9 +100,9 @@ class LstmModel:
     # Calculate the root mean squared error.
     def calculate_root_mean_and_squared_error(self):
         trainScore = math.sqrt(mean_squared_error(self.trainY[0], self.trainPredict[:, 0]))
-        print('Train Score: %.2f RMSE' % trainScore)
+        print('Training Score: %.2f RMSE' % trainScore)
         testScore = math.sqrt(mean_squared_error(self.testY[0], self.testPredict[:, 0]))
-        print('Test Score: %.2f RMSE' % testScore)
+        print('Testing Score: %.2f RMSE' % testScore)
 
     # ------------------------------------------------------------------------------------------------------------------
     # Save my model after training is complete.
